@@ -31,7 +31,7 @@ public class ControleUtilizacao implements IControleUtilizacao {
     }
 
     /**
-     * Registra a devolução de um veículo, apenas se o operador for o mesmo que realizou a retirada.
+     * Registra a devolução de um veículo (qualquer operador pode devolver).
      */
     @Override
     public void registrarDevolucao(Operador operador, String senha, Veiculo veiculo) {
@@ -46,27 +46,26 @@ public class ControleUtilizacao implements IControleUtilizacao {
         for (int i = lista.size() - 1; i >= 0; i--) {
             Utilizacao u = lista.get(i);
 
-            // Proteção contra nulls
-            if (u.getVeiculo() == null || u.getOperador() == null) continue;
+            if (u.getVeiculo() == null) continue;
 
             boolean mesmaPlaca = u.getVeiculo().getPlaca() != null &&
                                  u.getVeiculo().getPlaca().trim().equalsIgnoreCase(veiculo.getPlaca().trim());
-            boolean mesmoOperador = u.getOperador().getLogin().equalsIgnoreCase(operador.getLogin());
             boolean emAberto = u.getDataDevolucao() == null;
 
-            // ✅ Só devolve se for o mesmo operador e o veículo ainda estiver em uso
-            if (mesmaPlaca && mesmoOperador && emAberto) {
+            // ✅ devolve o veículo (independente do operador que retirou)
+            if (mesmaPlaca && emAberto) {
                 u.devolver(LocalDate.now(), LocalTime.now());
+                // grava também o operador que devolveu, se quiser manter o histórico
+                u.setOperador(operador);
                 dao.alterar("veiculo.placa", veiculo.getPlaca(), u);
 
-                System.out.println("✅ Devolução confirmada para operador " + operador.getLogin() +
-                        " e veículo " + veiculo.getPlaca());
+                System.out.println("✅ Devolução registrada para o veículo " + veiculo.getPlaca() +
+                                   " por operador " + operador.getLogin());
                 return;
             }
         }
 
-        System.out.println("⚠️ Nenhuma utilização em aberto encontrada para o operador "
-                + operador.getLogin() + " e veículo " + veiculo.getPlaca());
+        System.out.println("⚠️ Nenhuma utilização em aberto encontrada para o veículo " + veiculo.getPlaca());
     }
 
     /**

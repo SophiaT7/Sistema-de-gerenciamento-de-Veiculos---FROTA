@@ -55,7 +55,7 @@ public class DevolucaoController {
                 return;
             }
 
-            // 🔹 4. Busca utilização em aberto para este veículo
+            // 🔹 4. Busca utilização em aberto
             List<Utilizacao> todas = daoUtilizacao.listarTodos();
             Utilizacao emAberto = null;
 
@@ -77,14 +77,21 @@ public class DevolucaoController {
                 return;
             }
 
-            // 🔹 5. Registra devolução e operador responsável
+            // 🔹 5. Atualiza devolução
             emAberto.devolver(LocalDate.now(), LocalTime.now());
-            emAberto.setOperador(op); // ✅ opcional: salva também quem devolveu
+            emAberto.setOperador(op);
 
-            // 🔹 6. Atualiza no banco (substitui pelo mesmo documento)
-            daoUtilizacao.alterar("veiculo.placa", veiculo.getPlaca(), emAberto);
+            // ⚙️ 6. Substitui o documento antigo pelo atualizado (delete + insert)
+            daoUtilizacao.excluir("veiculo.placa", veiculo.getPlaca());
+            daoUtilizacao.inserir(emAberto);
 
-            mostrarAlerta("Devolução registrada com sucesso para o veículo " + veiculo.getPlaca() + "!");
+            // 🔹 7. Mensagem visual como na retirada
+            mostrarAlerta("✅ Devolução registrada com sucesso!\n" +
+                          "Operador: " + op.getLogin() +
+                          "\nVeículo: " + veiculo.getPlaca() +
+                          "\nData: " + LocalDate.now() +
+                          "\nHora: " + LocalTime.now().withNano(0));
+
             limparCampos();
 
         } catch (Exception e) {
