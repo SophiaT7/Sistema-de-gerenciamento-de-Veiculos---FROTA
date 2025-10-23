@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="548.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TelaInicialController">
+   <children>
+      <MenuBar layoutX="47.0" layoutY="41.0" prefHeight="34.0" prefWidth="454.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Motorista">
+            <items>
+              <MenuItem onAction="#abrirMotorista" text="Gravar Motorista" />
+                  <MenuItem mnemonicParsing="false" onAction="#abrirExcluirMotorista" text="Excluir Motorista" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Veiculo">
+            <items>
+              <MenuItem onAction="#abrirVeiculo" text="Gravar Veículo" />
+                  <MenuItem mnemonicParsing="false" onAction="#abrirExcluirVeiculo" text="Excluir Veículo" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Operador">
+            <items>
+               <MenuItem onAction="#abrirOperador" text="Gravar Operador" />
+                  <MenuItem mnemonicParsing="false" onAction="#abrirExcluirOperador" text="Excluir Operador" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="sair">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#voltarLogin" text="login" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#abrirDevolucao" text="Devolução">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#abrirRetirada" text="Retirada">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#abrirConsultar" text="Consultar">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
