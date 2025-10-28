@@ -42,7 +42,6 @@ public class TelaControler {
         try {
             App.setRoot("telaInicial");
 
-            // Fecha a tela atual de login
             Stage atual = (Stage) loginOperador.getScene().getWindow();
             atual.close();
 

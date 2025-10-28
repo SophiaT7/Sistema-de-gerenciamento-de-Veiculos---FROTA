@@ -6,12 +6,12 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ConsultaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ConsultaController">
    <children>
-      <TextField fx:id="campoPlaca" layoutX="340.0" layoutY="47.0" prefHeight="26.0" prefWidth="84.0" />
-      <TableView fx:id="tabelaUtilizacoes" layoutX="15.0" layoutY="100.0" prefHeight="200.0" prefWidth="573.0">
+      <TextField fx:id="campoPlaca" layoutX="285.0" layoutY="75.0" prefHeight="26.0" prefWidth="84.0" />
+      <TableView fx:id="tabelaUtilizacoes" layoutX="23.0" layoutY="162.0" prefHeight="202.0" prefWidth="594.0">
         <columns>
           <TableColumn fx:id="colDataRetirada" prefWidth="80.00006103515625" text="data Retirada" />
           <TableColumn fx:id="colHoraRetirada" prefWidth="85.5999755859375" text="hora Retirada" />
@@ -19,11 +19,25 @@
             <TableColumn fx:id="colOperador" prefWidth="64.0" text="operador" />
             <TableColumn fx:id="colDataDevolucao" prefWidth="98.4000244140625" text="data Devolução" />
             <TableColumn fx:id="colHoraDevolucao" prefWidth="98.39996337890625" text="hora Devolução" />
-            <TableColumn fx:id="colStatus" minWidth="0.0" prefWidth="83.19997558593752" text="status" />
+            <TableColumn fx:id="colStatus" minWidth="0.0" prefWidth="103.99997558593748" text="status" />
         </columns>
       </TableView>
-      <Label layoutX="41.0" layoutY="51.0" text="Insira a placa do Veículo para saber suas informações" />
-      <Button layoutX="33.0" layoutY="344.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
-      <Button layoutX="476.0" layoutY="47.0" mnemonicParsing="false" onAction="#buscarUtilizacoes" text="Buscar" />
+      <Label layoutX="138.0" layoutY="80.0" style="-fx-background-color: white; -fx-padding: ~5;" text="Insira a placa do Veículo" textOverrun="CLIP">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Button layoutX="33.0" layoutY="425.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+      <Button layoutX="451.0" layoutY="76.0" mnemonicParsing="false" onAction="#buscarUtilizacoes" text="Buscar" />
+      <TextField fx:id="campoData" layoutX="285.0" layoutY="111.0" />
+      <Label layoutX="23.0" layoutY="23.0" text="Consulte por Placa e Data ">
+         <font>
+            <Font name="Book Antiqua" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="171.0" layoutY="115.0" style="-fx-background-color: white; -fx-padding: ~5;" text="Insira a data" textOverrun="CLIP">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

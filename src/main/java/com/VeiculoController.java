@@ -78,7 +78,6 @@ public class VeiculoController {
             return;
         }
 
-        // Confirmação antes de excluir
         Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacao.setTitle("Confirmar exclusão");
         confirmacao.setHeaderText("Deseja realmente excluir este veículo?");

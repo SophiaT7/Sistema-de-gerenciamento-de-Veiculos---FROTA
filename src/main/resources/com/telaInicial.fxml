@@ -3,11 +3,18 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="548.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TelaInicialController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TelaInicialController">
    <children>
-      <MenuBar layoutX="47.0" layoutY="41.0" prefHeight="34.0" prefWidth="454.0">
+      <ImageView fitHeight="284.0" fitWidth="145.0" layoutX="9.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/dados.png" />
+         </image>
+      </ImageView>
+      <MenuBar layoutX="83.0" layoutY="41.0" prefHeight="34.0" prefWidth="454.0">
         <menus>
           <Menu mnemonicParsing="false" text="Motorista">
             <items>
@@ -27,27 +34,32 @@
                   <MenuItem mnemonicParsing="false" onAction="#abrirExcluirOperador" text="Excluir Operador" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" onAction="#abrirDevolucao" text="Devolução">
+              <items>
+                <MenuItem mnemonicParsing="false" text="abrir" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#abrirRetirada" text="Retirada">
+              <items>
+                <MenuItem mnemonicParsing="false" text="abrir" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onAction="#abrirConsultar" text="Consultar">
+              <items>
+                <MenuItem mnemonicParsing="false" text="abrir" />
+              </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="sair">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#voltarLogin" text="login" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" onAction="#abrirDevolucao" text="Devolução">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" onAction="#abrirRetirada" text="Retirada">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" onAction="#abrirConsultar" text="Consultar">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
         </menus>
       </MenuBar>
+      <ImageView fitHeight="200.0" fitWidth="397.0" layoutX="209.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/mustang.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

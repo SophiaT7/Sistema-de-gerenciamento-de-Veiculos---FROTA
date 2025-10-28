@@ -10,14 +10,10 @@ public class ControleUtilizacao implements IControleUtilizacao {
 
     private final Dao<Utilizacao> dao = new Dao<>(Utilizacao.class);
 
-    /**
-     * Registra a retirada de um veículo por um motorista e operador.
-     */
     @Override
     public void registrarRetirada(Operador operador, String senha, Motorista motorista, Veiculo veiculo) {
-        // Valida senha do operador
         if (!operador.getSenha().equals(senha)) {
-            System.out.println("⚠️ Senha incorreta para o operador " + operador.getLogin());
+            System.out.println("senha incorreta para o operador " + operador.getLogin());
             return;
         }
 
@@ -25,19 +21,15 @@ public class ControleUtilizacao implements IControleUtilizacao {
         u.retirar(LocalDate.now(), LocalTime.now(), motorista, veiculo, operador);
         dao.inserir(u);
 
-        System.out.println("✅ Retirada registrada: Operador " + operador.getLogin() +
+        System.out.println("retirada registrada: Operador " + operador.getLogin() +
                 ", Motorista " + motorista.getNome() +
                 ", Veículo " + veiculo.getPlaca());
     }
 
-    /**
-     * Registra a devolução de um veículo (qualquer operador pode devolver).
-     */
     @Override
     public void registrarDevolucao(Operador operador, String senha, Veiculo veiculo) {
-        // Valida senha
         if (!operador.getSenha().equals(senha)) {
-            System.out.println("⚠️ Senha incorreta para o operador " + operador.getLogin());
+            System.out.println("senha incorreta para o operador " + operador.getLogin());
             return;
         }
 
@@ -52,25 +44,20 @@ public class ControleUtilizacao implements IControleUtilizacao {
                                  u.getVeiculo().getPlaca().trim().equalsIgnoreCase(veiculo.getPlaca().trim());
             boolean emAberto = u.getDataDevolucao() == null;
 
-            // ✅ devolve o veículo (independente do operador que retirou)
             if (mesmaPlaca && emAberto) {
                 u.devolver(LocalDate.now(), LocalTime.now());
-                // grava também o operador que devolveu, se quiser manter o histórico
                 u.setOperador(operador);
                 dao.alterar("veiculo.placa", veiculo.getPlaca(), u);
 
-                System.out.println("✅ Devolução registrada para o veículo " + veiculo.getPlaca() +
+                System.out.println("devolução registrada para o veículo " + veiculo.getPlaca() +
                                    " por operador " + operador.getLogin());
                 return;
             }
         }
 
-        System.out.println("⚠️ Nenhuma utilização em aberto encontrada para o veículo " + veiculo.getPlaca());
+        System.out.println("nenhuma utilização em aberto encontrada para o veículo " + veiculo.getPlaca());
     }
 
-    /**
-     * Lista todas as utilizações de um veículo específico pela placa.
-     */
     @Override
     public List<Utilizacao> listarPorPlaca(String placa) {
         return dao.listarTodos().stream()
